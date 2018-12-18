@@ -1,0 +1,20 @@
+{% if plate %}
+  <tr>
+    <td>{{ plate.text }}</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>{{ plate.processing_time }}</td>
+    <!-- <td>{{ plate.owner }}</td>
+    <td>{{ plate.issue_date }}</td>
+    <td>{{ plate.expire_date }}</td>
+    <td>{{ plate.chasis }}</td>
+    <td>{{ plate.type }}</td> -->
+  </tr>
+{% else %}
+  <tr>
+    <td colspan="8" class="text-center bg-warning">{{ error_message }}</td>
+  </tr>
+{% endif %}
