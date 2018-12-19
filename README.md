@@ -1,9 +1,9 @@
 # LICENCE PLATE RECOGNITION SYSTEM #
 
-[![Travis](https://travis-ci.org/kapscapital/LicensePlateRecognition.png)](https://travis-ci.org/kapscapital/LicensePlateRecognition)
-[![circleci](https://circleci.com/gh/kapscapital/LicensePlateRecognition.png)](https://circleci.com/gh/kapscapital/LicensePlateRecognition)
+[![Travis](https://travis-ci.org/martneinc/LicensePlateRecognition.png)](https://travis-ci.org/martneinc/LicensePlateRecognition)
+[![circleci](https://circleci.com/gh/martneinc/LicensePlateRecognition.png)](https://circleci.com/gh/martneinc/LicensePlateRecognition)
 
-* [Demo](http://alrp.kapscapital.com/) Try Demo
+* [Demo](http://alrp.martneinc.com/) Try Demo
 
 ## **About**
 A python program that uses concepts of image processing and OCR to identify the characters on a license plate. The OCR aspect was done with machine learning.
@@ -26,7 +26,7 @@ The program was written with python 2.7 and the following python packages are re
 * [Matplotlib](http://matplotlib.org) Matplotlib is a 2D plotting library for python
 
 ## **How to use**
-1. Clone the repository or download the zip `git clone https://github.com/kapscapital/LicensePlateRecognition`
+1. Clone the repository or download the zip `git clone https://gitlab.com/martneinc/LicensePlateRecognition`
 2. Change to the cloned directory (or extracted directory)
 3. Create a virtual environment with virtualenv or virtualenvwrapper
 4. Install all the necessary dependencies by using pip `pip install -r requirements.txt`
