@@ -1,0 +1,36 @@
+{% load static %}
+        <!-- Navigation Bar-->
+        <header id="topnav">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %} alert-dismissable" style="margin-bottom:0px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+            
+            <div class="navbar-custom">
+                <div class="container">
+                    <div id="navigation">
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+
+                            <li class="has-submenu">
+                                <a href="{% url 'index' %}"><i class="mdi mdi-view-dashboard"></i>Home</a>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href="{% url 'index' %}#price"><i class="mdi mdi-google-pages"></i>Pricing</a>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href="{% url 'index' %}#contact-form"><i class="mdi mdi-phone"></i>Contact Us</a>
+                            </li>
+                        </ul>
+                        <!-- End navigation menu -->
+                    </div> <!-- end #navigation -->
+                </div> <!-- end container -->
+            </div> <!-- end navbar-custom -->
+        </header>
+        <!-- End Navigation Bar-->

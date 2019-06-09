@@ -6,8 +6,8 @@ $(document).ready(function(){
     $("#filer_input1").filer({
         limit: null,
         maxSize: 3,
-        extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
-        changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Drag & Drop Images here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="jFiler-input-choose-btn btn btn-custom waves-effect waves-light">Browse Images</a></div></div>',
+        extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd', 'mp4', 'mkv', 'mpg', 'avi'],
+        changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Drag & Drop Images or Videos here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="jFiler-input-choose-btn btn btn-default waves-effect waves-light">Browse Images or Video<i class="fa fa-upload m-l-5"></i> </a></div></div>',
         showThumbs: true,
         theme: "dragdropbox",
         templates: {
@@ -80,9 +80,12 @@ $(document).ready(function(){
             success: function(data, el){
                 var parent = el.find(".jFiler-jProgressBar").parent();
                 el.find(".jFiler-jProgressBar").fadeOut("slow", function(){
-                    $("<div class=\"jFiler-item-others text-success\"><i class=\"icon-jfi-check-circle\"></i> Success</div>").hide().appendTo(parent).fadeIn("slow");
+                    if(data.error_message) {
+                        $("<div class=\"jFiler-item-others text-error\"><i class=\"icon-jfi-check-circle\"></i>"+ data.error_message + "<br> in " + data.end_time + "</div>").hide().appendTo(parent).fadeIn("slow");
+                    } else {
+                        $("<div class=\"jFiler-item-others text-success\"><i class=\"icon-jfi-check-circle\"></i>"+ data.plate_text + "<br> in " + data.end_time + "</div>").hide().appendTo(parent).fadeIn("slow");
+                    }
                 });
-                $("#plate-table tbody").append(data.html_plate_list);
 
             },
             error: function(el){
@@ -110,16 +113,16 @@ $(document).ready(function(){
         onEmpty: null,
         options: null,
         captions: {
-            button: "Choose Image",
-            feedback: "Choose image To Upload",
+            button: "Choose Image or Video",
+            feedback: "Choose image or video To Upload",
             feedback2: "files were chosen",
-            drop: "Drop Image here to Upload",
-            removeConfirmation: "Are you sure you want to remove this image?",
+            drop: "Drop Image or Video here to Upload",
+            removeConfirmation: "Are you sure you want to remove this image or video?",
             errors: {
-                filesLimit: "Only {{fi-limit}} images are allowed to be uploaded.",
-                filesType: "Only Images are allowed to be uploaded.",
-                filesSize: "{{fi-name}} is too large! Please upload image up to {{fi-maxSize}} MB.",
-                filesSizeAll: "Image you've choosed are too large! Please upload image up to {{fi-maxSize}} MB."
+                filesLimit: "Only {{fi-limit}} images or videos are allowed to be uploaded.",
+                filesType: "Only Images or Videos are allowed to be uploaded.",
+                filesSize: "{{fi-name}} is too large! Please upload image or video up to {{fi-maxSize}} MB.",
+                filesSizeAll: "Image or Video you've choosed are too large! Please upload image or video up to {{fi-maxSize}} MB."
             }
         }
     });

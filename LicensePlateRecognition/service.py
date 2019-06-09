@@ -49,17 +49,17 @@ def license_plate_extract(request):
     data = dict()
 
     if len(license_plate) == 0:
-        data['html_plate_list'] = render_to_string('plate_list.html', {
-            "error_message": "License plate could not be located"
-        })
+        end_time = str(time.time() - start_time)  + ' sec'
+        data['end_time'] = end_time
+        data['error_message'] = "License plate could not be located"
         return data
     else:
         ocr_instance = OCROnObjects(license_plate)
 
         if ocr_instance.candidates == {}:
-            data['html_plate_list'] = render_to_string('plate_list.html', {
-                "error_message": "No character was segmented"
-            })
+            end_time = str(time.time() - start_time)  + ' sec'
+            data['end_time'] = end_time
+            data['error_message'] = "No character was segmented"
             return data
         else:
             plotting.plot_cca(license_plate, ocr_instance.candidates['coordinates'])
@@ -72,15 +72,9 @@ def license_plate_extract(request):
             plate_text = text_phase.text_reconstruction(scattered_plate_text,
                 ocr_instance.candidates['columnsVal'])
             
-            end_time = str(time.time() - start_time)  + ' seconds'
-
-            plate = {
-                "text": plate_text,
-                "processing_time": end_time,
-            }
-            data['html_plate_list'] = render_to_string('plate_list.html', {
-            'plate': plate
-            })
+            end_time = str(time.time() - start_time)  + ' sec'
+            data['end_time'] = end_time
+            data['plate_text'] = plate_text
             return data
 
 class DeepMachineLearning():
@@ -210,7 +204,7 @@ class Plotting:
                 max_row - min_row, fill=False, edgecolor='red', linewidth=2)
             ax.add_patch(bound_box)
 
-        plt.show()
+        #plt.show()
 
 class PreProcess():
     

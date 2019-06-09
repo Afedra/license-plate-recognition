@@ -46,6 +46,7 @@ class AccuracyValidation():
 
         for i in range(len(predictions)):
             if predictions[i] != correct_labels[i]:
+                print(img_test[i])
                 probabilities = model.predict_proba(img_test[i].reshape(1, -1))
                 print 'Predicted: '+predictions[i]+'\t\t Actual:'+correct_labels[i]
                 print 'Probability Distribution'

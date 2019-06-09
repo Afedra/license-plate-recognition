@@ -15,6 +15,15 @@ SECRET_KEY = 'x%0$t++jv^yhtk4c1ixum8cjnzmj$6x-^puiytw+c*xen3-r43'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+ALLOWED_EMAILS = []
+
+DEFAULT_FROM_EMAIL = 'ebartile@gmail.com'
+
+ADMINS = (
+    (u'Emaunel Bartile', 'ebartile@gmail.com'),
+)
+
+MANAGERS = ADMINS
 
 
 # Application definition
@@ -120,3 +129,19 @@ STATICFILES_DIRS = (
    os.path.join(BASE_DIR, "static"),
 )
 
+FORCE_SCRIPT_NAME = ''
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+#########################################
+## MAIL SYSTEM SETTINGS
+#########################################
+
+# EMAIL SETTINGS EXAMPLE
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+#EMAIL_USE_TLS = False
+#EMAIL_HOST = 'localhost'
+#EMAIL_PORT = 25
+#EMAIL_HOST_USER = 'user'
+#EMAIL_HOST_PASSWORD = 'password'
